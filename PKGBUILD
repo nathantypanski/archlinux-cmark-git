@@ -1,12 +1,12 @@
 # Maintainer: Nathan Typanski <mail@nathantypanski.com>
 
-_pkgname=stmd
-pkgname=stmd-git
+_pkgname=commonmark
+pkgname="$_pkgname"-git
 pkgver=r56.e92aabb
 pkgrel=1
-pkgdesc="Standard Markdown to HTML converter"
+pkgdesc="cmark CommonMark compiler"
 arch=('i686' 'x86_64')
-url="https://github.com/jgm/stmd.git"
+url="https://github.com/jgm/CommonMark.git"
 license=('BSD3')
 depends=('re2c')
 options=(!emptydirs libtool)
@@ -20,7 +20,7 @@ pkgver() {
 build() {
         cd "${srcdir}/${_pkgname}"
         make
-        gzip man/man1/stmd.1
+        gzip man/man1/cmark.1
 }
 
 check() {
@@ -31,7 +31,7 @@ check() {
 package() {
         cd "${srcdir}/${_pkgname}"
         install -Dm755 stmd "$pkgdir/usr/bin/stmd"
-        install -Dm644 man/man1/stmd.1.gz "$pkgdir/usr/share/man/man1/stmd.1.gz"
+        install -Dm644 man/man1/cmark.1.gz "$pkgdir/usr/share/man/man1/cmark.1.gz"
 }
 
 md5sums=('SKIP'
